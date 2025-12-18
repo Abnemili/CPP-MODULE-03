@@ -5,8 +5,7 @@ ScavTrap::ScavTrap() : ClapTrap() {
     this->energyPoints = 50;
     this->attackDamage = 20;
     std::cout << "ScavTrap " << this->name << " default constructor called" << std::endl;
-}
-
+} 
 
 ScavTrap::ScavTrap(std::string const & name) : ClapTrap(name) {
     this->hitPoints = 100;
@@ -32,6 +31,7 @@ ScavTrap::~ScavTrap() {
     std::cout << "ScavTrap " << this->name << " destructor called" << std::endl;
 }
 
+
 void ScavTrap::attack(const std::string & target) {
     if (energyPoints > 0 && hitPoints > 0) {
         energyPoints--;
@@ -45,4 +45,4 @@ void ScavTrap::attack(const std::string & target) {
 
 void ScavTrap::guardGate() {
     std::cout << "ScavTrap " << name << " is now in Gate Keeper mode." << std::endl;
-} 
+}

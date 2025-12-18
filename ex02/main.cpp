@@ -1,18 +1,18 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main() {
-
-
     std::cout << "\n-- Constructors --" << std::endl;
-
     ClapTrap rick("Rick");
-    ClapTrap morty("Morty");
-    ClapTrap abdo("Abdo");
+    ScavTrap morty("Morty");
+    FragTrap abdo("Abdo");
 
     std::cout << "\n-- Copy and assignment --" << std::endl;
-    ClapTrap cloneRick(rick);
-    ClapTrap cloneMorty; 
-    cloneMorty = morty;
+    FragTrap cloneAbdo(abdo);
+    FragTrap anotherAbdo("Temp");
+    anotherAbdo = abdo;
+
     std::cout << "\n-- Combat --" << std::endl;
     rick.attack(morty.getName());
     morty.takeDamage(rick.getAttackDamage());
@@ -23,15 +23,13 @@ int main() {
     abdo.attack(rick.getName());
     rick.takeDamage(abdo.getAttackDamage());
 
+    std::cout << "\n-- Special abilities --" << std::endl;
+    morty.guardGate();
+    abdo.highFivesGuys();
+
     std::cout << "\n-- Repairs --" << std::endl;
-    morty.beRepaired(4);
-    abdo.beRepaired(2);
-
-    std::cout << "\n-- Energy status test (Rick attacks repeatedly) --" << std::endl;
-    for (int i = 0; i < 11; ++i)
-        rick.attack(" l3ibad ");
-
-    rick.beRepaired(3);
+    morty.beRepaired(5);
+    abdo.beRepaired(7);
 
     std::cout << "\n-- Final status --" << std::endl;
     std::cout << rick.getName() << " HP:" << rick.getHitPoints()
@@ -46,13 +44,13 @@ int main() {
               << " EP:" << abdo.getEnergyPoints()
               << " AD:" << abdo.getAttackDamage() << std::endl;
 
-    std::cout << cloneRick.getName() << " HP:" << cloneRick.getHitPoints()
-              << " EP:" << cloneRick.getEnergyPoints()
-              << " AD:" << cloneRick.getAttackDamage() << std::endl;
+    std::cout << cloneAbdo.getName() << " HP:" << cloneAbdo.getHitPoints()
+              << " EP:" << cloneAbdo.getEnergyPoints()
+              << " AD:" << cloneAbdo.getAttackDamage() << std::endl;
 
-    std::cout << cloneMorty.getName() << " HP:" << cloneMorty.getHitPoints()
-              << " EP:" << cloneMorty.getEnergyPoints()
-              << " AD:" << cloneMorty.getAttackDamage() << std::endl;
+    std::cout << anotherAbdo.getName() << " HP:" << anotherAbdo.getHitPoints()
+              << " EP:" << anotherAbdo.getEnergyPoints()
+              << " AD:" << anotherAbdo.getAttackDamage() << std::endl;
 
     std::cout << "\n-- End of program (destructors called) --" << std::endl;
     return 0;
