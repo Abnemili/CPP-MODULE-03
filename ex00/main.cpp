@@ -9,10 +9,15 @@ int main() {
     ClapTrap morty("Morty");
     ClapTrap abdo("Abdo");
 
+
+
     std::cout << "\n-- Copy and assignment --" << std::endl;
     ClapTrap cloneRick(rick);
     ClapTrap cloneMorty; 
     cloneMorty = morty;
+
+
+
     std::cout << "\n-- Combat --" << std::endl;
     rick.attack(morty.getName());
     morty.takeDamage(rick.getAttackDamage());
@@ -26,6 +31,8 @@ int main() {
     std::cout << "\n-- Repairs --" << std::endl;
     morty.beRepaired(4);
     abdo.beRepaired(2);
+
+    
 
     std::cout << "\n-- Energy status test (Rick attacks repeatedly) --" << std::endl;
     for (int i = 0; i < 11; ++i)
