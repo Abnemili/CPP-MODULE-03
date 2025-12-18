@@ -1,34 +1,24 @@
 #include "ClapTrap.hpp"
 
 int main() {
-	ClapTrap a("dahira");
-	ClapTrap b("khribi9");
+    ClapTrap a("dahira"); // parameterized constructor creat a ClapTrap named dahira
+    ClapTrap b("khribi9"); // parameterized constructor creat a ClapTrap named khribi9
 
-	std::cout << "\n-- Initial status --" << std::endl;
-	std::cout << a.getName() << " HP:" << a.getHitPoints() << " EP:" << a.getEnergyPoints() << " AD:" << a.getAttackDamage() << std::endl;
-	std::cout << b.getName() << " HP:" << b.getHitPoints() << " EP:" << b.getEnergyPoints() << " AD:" << b.getAttackDamage() << std::endl;
+    std::cout << "\n-- Combat --" << std::endl;
+    a.attack("khribi9"); // 
+    b.takeDamage(a.getAttackDamage());
 
-	ClapTrap c = a; // copy
-	ClapTrap d; d = b; // assignment
+    b.attack("dahira");
+    a.takeDamage(b.getAttackDamage());
 
-	std::cout << "\n-- Combat --" << std::endl;
-	a.attack(b.getName());
-	b.takeDamage(a.getAttackDamage());
+    std::cout << "\n-- Final status --" << std::endl;
+    std::cout << a.getName() << " HP:" << a.getHitPoints() 
+              << " EP:" << a.getEnergyPoints() 
+              << " AD:" << a.getAttackDamage() << std::endl;
 
-	b.beRepaired(5);
+    std::cout << b.getName() << " HP:" << b.getHitPoints() 
+              << " EP:" << b.getEnergyPoints() 
+              << " AD:" << b.getAttackDamage() << std::endl;
 
-	b.attack(a.getName());
-	a.takeDamage(b.getAttackDamage());
-
-	std::cout << "\n-- Drain energy (dahira attacks repeatedly) --" << std::endl;
-	for (int i = 0; i < 11; ++i)
-		a.attack("training-dummy");
-
-	a.beRepaired(2);
-
-	std::cout << "\n-- Final status --" << std::endl;
-	std::cout << a.getName() << " HP:" << a.getHitPoints() << " EP:" << a.getEnergyPoints() << " AD:" << a.getAttackDamage() << std::endl;
-	std::cout << b.getName() << " HP:" << b.getHitPoints() << " EP:" << b.getEnergyPoints() << " AD:" << b.getAttackDamage() << std::endl;
-
-	return 0;
+    return 0;
 }
